@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -6,8 +6,9 @@ dataSources:
     name: Membership
     network: mumbai
     source:
-      address: "0x0d7b3b19b3495B47E8902BAfcBa5A05a57f1E2dE"
+      address: "0xE2278B832fE506BEBd2e34f7E65554d3A60298Aa"
       abi: Membership
+      startBlock: 25594500
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -17,6 +18,7 @@ dataSources:
         - ApprovalForAll
         - OwnershipTransferred
         - Transfer
+        - MembershipCreated
       abis:
         - name: Membership
           file: ./abis/Membership.json
@@ -29,4 +31,6 @@ dataSources:
           handler: handleOwnershipTransferred
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
+        - event: MembershipCreated(string,string,string,uint256)
+          handler: handleMembershipCreated
       file: ./src/mapping.ts

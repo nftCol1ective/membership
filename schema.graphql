@@ -1,6 +1,7 @@
-type ExampleEntity @entity {
+type MembershipEntity @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+  name: String!
+  profileId: String!
+  tags: String!
+  tokenId: Int
 }
